@@ -31,10 +31,10 @@ get_ups_info () {
         syno_inputvoltage=$(echo $syno_inputvoltage | cut -c 16-)
         syno_runtime=$(echo $syno_runtime | cut -c 10-)
 
-        syno_battvoltage=$(printf "%.0f" $syno_battvoltage)
-        syno_battcharge=$(printf "%.0f" $syno_battcharge)
-        syno_battload=$(printf "%.0f" $syno_battload)
-        syno_inputvoltage=$(printf "%.0f" $syno_inputvoltage)
+        # syno_battvoltage=$(printf "%.0f" $syno_battvoltage)
+        # syno_battcharge=$(printf "%.0f" $syno_battcharge)
+        # syno_battload=$(printf "%.0f" $syno_battload)
+        # syno_inputvoltage=$(printf "%.0f" $syno_inputvoltage)
 
         if [[ $syno_battvoltage -le 0 || $syno_battcharge -le 0 || $syno_battload -le 0 || $syno_inputvoltage -le 0 || $syno_runtime -le 0 ]];
             then
