@@ -32,7 +32,7 @@ print_data () {
 
 write_data () {
     #Write the data to the database
-    curl -i -XPOST 'http://192.168.1.3:8086/write?db=dev' --data-binary "host_data,host=synology,sensor=uptime value=$syno_uptime"
+    curl -i -XPOST 'http://192.168.1.3:8086/write?db=home' --data-binary "host_data,host=synology,sensor=uptime value=$syno_uptime"
 }
 
 #Prepare to start the loop and warn the user
