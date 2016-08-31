@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#This script pulls system information from the Synology NAS
+#This script pulls system and network information from the network router
 
 #The time we are going to sleep between readings
 #Also used to calculate the current usage on the interface
@@ -13,9 +13,9 @@ get_uptime () {
     COUNTER=0
     while [  $COUNTER -lt 4 ]; do
         # System uptime
-        syno_uptime=`snmpget -v 2c -c public 192.168.1.3 1.3.6.1.2.1.1.3.0 -Ovt`
+        asus_uptime=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.25.1.1.0 -Ovt`
 
-        if [[ $syno_uptime -le 0 ]];
+        if [[ $asus_uptime -le 0 ]];
             then
                 echo "Retry getting data - received some invalid data from the read"
             else
@@ -27,12 +27,12 @@ get_uptime () {
 }
 
 print_data () {
-    echo "Synology Uptime: $syno_uptime"
+    echo "Asus RT-AC66U Uptime: $asus_uptime"
 }
 
 write_data () {
     #Write the data to the database
-    curl -i -XPOST 'http://192.168.1.3:8086/write?db=home' --data-binary "host_data,host=synology,sensor=uptime value=$syno_uptime"
+    curl -i -XPOST 'http://192.168.1.3:8086/write?db=home' --data-binary "host_data,host=asus_rt_ac66u,sensor=uptime value=$asus_uptime"
 }
 
 #Prepare to start the loop and warn the user
@@ -41,7 +41,7 @@ while :
 do
     get_uptime
 
-    if [[ $syno_uptime -le 0 ]];
+    if [[ $asus_uptime -le 0 ]];
         then
             echo "Skip this datapoint - something went wrong with the read"
         else
