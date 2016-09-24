@@ -13,7 +13,7 @@ get_uptime () {
     COUNTER=0
     while [  $COUNTER -lt 4 ]; do
         # System uptime
-        syno_uptime=`snmpget -v 2c -c public 192.168.1.3 1.3.6.1.2.1.1.3.0 -Ovt`
+        syno_uptime=`snmpget -v 2c -c public 192.168.1.3 1.3.6.1.2.1.25.1.1.0 -Ovt`
 
         if [[ $syno_uptime -le 0 ]];
             then
