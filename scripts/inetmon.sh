@@ -23,7 +23,7 @@ sleeptime=30
 # iso.1.3.6.1.2.1.31.1.1.1.1.5 = STRING: "vlan1" LAN Switch
 # iso.1.3.6.1.2.1.31.1.1.1.1.6 = STRING: "vlan2"
 # iso.1.3.6.1.2.1.31.1.1.1.1.7 = STRING: "br0" Bridge
-# iso.1.3.6.1.2.1.31.1.1.1.1.59 = STRING: "tun22" VPN
+# iso.1.3.6.1.2.1.31.1.1.1.1.8 = STRING: "tun22" VPN
 
 #Get in and out octets
 old_lo_in=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.10.1 -Ov`
@@ -40,8 +40,8 @@ old_vlan2_in=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.10.6 -Ov`
 old_vlan2_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.6 -Ov`
 old_br0_in=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.10.7 -Ov`
 old_br0_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.7 -Ov`
-old_tun22_in=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.10.59 -Ov`
-old_tun22_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.59 -Ov`
+old_tun22_in=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.10.8 -Ov`
+old_tun22_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.8 -Ov`
 
 #Strip out the value from the string
 old_lo_in=$(echo $old_lo_in | cut -c 12-)
@@ -83,8 +83,8 @@ do
     vlan2_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.6 -Ov`
     br0_in=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.10.7 -Ov`
     br0_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.7 -Ov`
-    tun22_in=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.10.59 -Ov`
-    tun22_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.59 -Ov`
+    tun22_in=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.10.8 -Ov`
+    tun22_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.8 -Ov`
     
     #Strip out the value from the string
     lo_in=$(echo $lo_in | cut -c 12-)
@@ -166,8 +166,8 @@ do
         old_vlan2_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.6 -Ov`
         old_br0_in=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.10.7 -Ov`
         old_br0_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.7 -Ov`
-        old_tun22_in=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.10.59 -Ov`
-        old_tun22_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.59 -Ov`
+        old_tun22_in=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.10.8 -Ov`
+        old_tun22_out=`snmpget -v 2c -c public 192.168.1.1 1.3.6.1.2.1.2.2.1.16.8 -Ov`
 
         old_lo_in=$(echo $old_lo_in | cut -c 12-)
         old_lo_out=$(echo $old_lo_out | cut -c 12-)
